@@ -8,12 +8,63 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
   <style type="text/css">
+#title {
+  width: 900px;
+  min-height: 18px;
+  margin: 10px auto;
+  text-align: center;
+  font-size: 16px;
+  color: #E2E2E2;
+  font-weight: 400;
+}
+body {
+  margin: 0;
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #222831;
 
+}
+.arrow {
+  position: fixed;
+  top: 50%;
+  margin-top: -32px;
+  font-size: 64px;
+  color: #E2E2E2;
+  font-family: arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  text-decoration: none;
+}
+#prev {
+  left: 10%;
+}
+
+#next {
+  right: 10%;
+}
+.navlink {
+  margin: 14px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ccc;
+}
+
+.arrow:hover, .navlink:hover {
+  color: #777;
+}
+
+.arrow:active, .navlink:hover {
+  color: #000;
+}
 
     #viewer {
       width: 600px;
       height: 100vh;
-      /* overflow: auto; */
+      overflow: auto;
       margin: 0 auto;
     }
 
@@ -21,6 +72,8 @@
 </head>
 <body>
   <div id="title"><input type="file" id="input"></div>
+  <br />
+  <br />
   <div id="viewer" class="spreads"></div>
   <a id="prev" href="#prev" class="arrow">‹</a>
   <a id="next" href="#next" class="arrow">›</a>
@@ -87,6 +140,25 @@
       e.preventDefault();
     }, false);
 
+
+
+
+
+    rendition.themes.default({
+      h2: {
+        'font-size': '32px',
+        color: 'purple'
+      },
+      p: {
+        "margin": '10px'
+      },
+      body: {
+        'background': '#222831',
+	      'color': '#ccc'
+      },
+    });
+
+    rendition.themes.select("dark");
     
 
 
